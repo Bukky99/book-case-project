@@ -37,7 +37,7 @@ const Book = (props) => {
   };
 
   const renderAuthors = () => {
-    if (authors.length === 1) {
+    if (authors && authors.length === 1) {
       return authors;
     }
     return authors.map((author) => author + ', ');
