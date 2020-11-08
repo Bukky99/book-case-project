@@ -6,13 +6,14 @@ const About = () => {
     <div className="aboutHeader">
       <h1>Welcome to the Bookcase Application</h1>
       <div className="breadcrumb">
-        <Link to="/bookcase"> Bookcase |</Link>
-        <Link to="/"> Home |</Link>
+        <Link to="/bookwishlist"> Book Wish List | </Link>
+        <Link to="/search"> Search </Link>
       </div>
       <div className="aboutDescription">
         <p>
           This following aaplication was created by Bukky Omojowo. This bookcase
-          app displays a list of books that a user can add to a local bookcase.
+          app displays a list of books that a user can add to a their Book Wish
+          List.
         </p>
         <p>
           Click on the "Add" + button to add a book to your bookcase. Use the

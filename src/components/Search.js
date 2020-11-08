@@ -10,7 +10,7 @@ const Search = (props) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="searchKeyword">
-        <Form.Label>Enter Search</Form.Label>
+        <Form.Label>Enter a book or keyword to search</Form.Label>
         <Form.Control
           type="keyword"
           placeholder="Enter keyword"

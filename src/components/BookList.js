@@ -1,30 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Book from './Book';
 import { Link } from 'react-router-dom';
-import ReactPaginate from 'react-pagination';
+import Pagination from '@material-ui/lab/Pagination';
+import Typography from '@material-ui/core/Typography';
 
 const BookList = (props) => {
+  const [page, setPage] = useState(1);
+  const [booksOnShow, setBooksOnShow] = useState(5);
+
+  function calculateBooksOnShow(books, currentPage) {
+    return books.slice(currentPage - 1, currentPage * 4);
+  }
+
+  function onChange(event, pageNumber) {
+    console.log(page);
+    console.log(pageNumber);
+    console.log('-----');
+    setPage(pageNumber);
+    setBooksOnShow(booksOnShow);
+    console.log(booksOnShow);
+  }
+
   return (
     <div>
-      <Link to="/"> Home </Link>
       <div>
-        <h1>Books Added to wish List</h1>
         {props.books.map((book) => (
-          <Book key={book.id} book={book} bookRemoved={props.bookRemoved} />
+          <Book
+            key={book.id}
+            book={book}
+            bookRemoved={props.bookRemoved}
+            booksOnShow={booksOnShow}
+          />
         ))}
-        <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          pageCount={5}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={() => {}}
-          containerClassName={'pagination'}
-          subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-        />
+        <Pagination
+          page={page}
+          //calculateBooksOnShow={calculateBooksOnShow}
+          onChange={onChange}
+          count={Math.ceil(props.books.length / 5)}
+          color="secondary"
+          showFirstButton
+          showLastButton
+        />{' '}
+        <Typography>Page: {page}</Typography>
       </div>
     </div>
   );

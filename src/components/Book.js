@@ -51,7 +51,9 @@ const Book = (props) => {
       </h2>
       <p>{renderAmount()}</p>
       <p>{description}</p>
-      <button onClick={() => props.bookRemoved(title)}>Remove - </button>
+      <button id="addBtn" onClick={() => props.bookRemoved(title)}>
+        Add +{' '}
+      </button>
     </div>
   );
 };
