@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Search from './components/Search';
 import About from './pages/About';
 import BookWishList from './pages/BookWishList';
+import Button from './components/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from '@material-ui/lab/Pagination';
 //import {Redirect } from 'react-router-dom'
@@ -45,6 +46,7 @@ pe=books&projection=lite`,
         render={() => (
           <React.Fragment>
             <About />
+            <Button number={props.number} />
           </React.Fragment>
         )}
       />

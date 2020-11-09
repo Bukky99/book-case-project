@@ -6,35 +6,32 @@ import Typography from '@material-ui/core/Typography';
 
 const BookList = (props) => {
   const [page, setPage] = useState(1);
-  const [booksOnShow, setBooksOnShow] = useState(5);
+  const [booksOnShow, setBooksOnShow] = useState(props.books);
 
   function calculateBooksOnShow(books, currentPage) {
-    return books.slice(currentPage - 1, currentPage * 4);
+    setBooksOnShow(booksOnShow);
+    {
+      return books.slice(currentPage - 1, currentPage * 3);
+    }
   }
 
   function onChange(event, pageNumber) {
     console.log(page);
     console.log(pageNumber);
-    console.log('-----');
+    console.log(booksOnShow[1]);
     setPage(pageNumber);
-    setBooksOnShow(booksOnShow);
-    console.log(booksOnShow);
+    console.log(props.books);
+    setBooksOnShow();
   }
 
   return (
     <div>
       <div>
         {props.books.map((book) => (
-          <Book
-            key={book.id}
-            book={book}
-            bookRemoved={props.bookRemoved}
-            booksOnShow={booksOnShow}
-          />
+          <Book key={book.id} book={book} bookRemoved={props.bookRemoved} />
         ))}
         <Pagination
           page={page}
-          //calculateBooksOnShow={calculateBooksOnShow}
           onChange={onChange}
           count={Math.ceil(props.books.length / 5)}
           color="secondary"
